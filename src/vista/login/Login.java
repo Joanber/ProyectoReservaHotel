@@ -5,6 +5,7 @@
  */
 package vista.login;
 
+import vista.Principal.VtnPrincipal;
 
 /**
  *
@@ -160,7 +161,9 @@ public class Login extends javax.swing.JFrame {
 
     private void login() {
 
-       
+        VtnPrincipal vtn = new VtnPrincipal();
+        vtn.setVisible(true);
+        this.dispose();
 
     }
 

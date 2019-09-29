@@ -14,35 +14,29 @@ import java.util.List;
  */
 public class CONS {
 
-    public static List<TipoElemento> tipoElementos = new ArrayList<TipoElemento>() {
+    public static final List<TipoElemento> TIPO_ELEMENTOS = new ArrayList<TipoElemento>() {
         {
-            add(new TipoElemento()
-                    .setID(this.size())
-                    .setDescripcion("SERVICIO")
-            );
-            add(new TipoElemento()
-                    .setID(this.size())
-                    .setDescripcion("OBJETO")
-            );
+
         }
     };
 
-    public static List<Elemento> elementos = new ArrayList<Elemento>() {
-        {
-            add(new Elemento());
-        }
-    };
+    public static final List<Elemento> ELEMENTOS = new ArrayList<Elemento>();
 
-    public static void addTipoElemento(TipoElemento tipoElemento) {
-        tipoElementos.add(
-                tipoElemento.setID(tipoElementos.size())
+    static {
+        TIPO_ELEMENTOS.add(new TipoElemento()
+                .setDescripcion("SERVICIO")
+        );
+        TIPO_ELEMENTOS.add(new TipoElemento()
+                .setDescripcion("OBJETO")
         );
     }
 
-    public static void addElemento(Elemento elemento) {
-        elementos.add(
-                elemento.setID(elementos.size())
-        );
+    public static void add(TipoElemento tipoElemento) {
+        TIPO_ELEMENTOS.add(tipoElemento);
+    }
+
+    public static void add(Elemento elemento) {
+        ELEMENTOS.add(elemento);
     }
 
 }

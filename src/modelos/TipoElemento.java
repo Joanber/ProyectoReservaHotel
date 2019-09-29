@@ -11,19 +11,9 @@ package modelos;
  */
 public class TipoElemento {
 
-    private Integer ID;
     private String descripcion;
 
     public TipoElemento() {
-    }
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public TipoElemento setID(Integer ID) {
-        this.ID = ID;
-        return this;
     }
 
     public String getDescripcion() {
@@ -33,11 +23,6 @@ public class TipoElemento {
     public TipoElemento setDescripcion(String descripcion) {
         this.descripcion = descripcion;
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return "TipoElemento{" + "ID=" + ID + ", descripcion=" + descripcion + '}';
     }
 
 }

@@ -39,7 +39,14 @@ public class Habitacion {
     }
 
     public Double getPrecio() {
-        return precio;
+
+        this.precio = this.elementos
+                .stream()
+                .map(c -> c.getPrecio())
+                .reduce(Double::sum)
+                .orElse(0.0);
+
+        return this.precio;
     }
 
     public void setPrecio(Double precio) {

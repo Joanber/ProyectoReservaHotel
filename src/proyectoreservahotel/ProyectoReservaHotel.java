@@ -5,11 +5,12 @@
  */
 package proyectoreservahotel;
 
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.UnsupportedLookAndFeelException;
-import modelos.CONS;
 import vista.login.Login;
 
 /**
@@ -33,15 +34,13 @@ public class ProyectoReservaHotel {
                     break;
                 }
             }
-            
-            CONS.tipoElementos.forEach(System.out::println);
-            
+
             Login login = new Login();
             login.setVisible(true);
-            
+
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(ProyectoReservaHotel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

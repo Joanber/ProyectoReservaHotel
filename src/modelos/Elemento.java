@@ -11,21 +11,11 @@ package modelos;
  */
 public class Elemento {
 
-    private Integer ID;
     private String nombre;
     private Double precio;
     private TipoElemento tipoElemento;
 
     public Elemento() {
-    }
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public Elemento setID(Integer ID) {
-        this.ID = ID;
-        return this;
     }
 
     public String getNombre() {

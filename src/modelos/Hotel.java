@@ -5,9 +5,6 @@
  */
 package modelos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author MrRainx
@@ -19,10 +16,8 @@ public class Hotel {
     private String direccion = "ESTA ES LA DIRECCION DEL HOTEL";
     private String telefono = "09963456545";
     private String correo = "correo@correo.com";
-    private List<Habitacion> habitaciones;
 
     public Hotel() {
-        habitaciones = new ArrayList<>();
     }
 
     public Integer getID() {
@@ -63,14 +58,6 @@ public class Hotel {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public List<Habitacion> getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void setHabitaciones(List<Habitacion> habitaciones) {
-        this.habitaciones = habitaciones;
     }
 
 }

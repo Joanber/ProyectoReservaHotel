@@ -23,32 +23,36 @@ public class Elemento {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public Elemento setID(Integer ID) {
         this.ID = ID;
+        return this;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public Elemento setNombre(String nombre) {
         this.nombre = nombre;
+        return this;
     }
 
     public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public Elemento setPrecio(Double precio) {
         this.precio = precio;
+        return this;
     }
 
     public TipoElemento getTipoElemento() {
         return tipoElemento;
     }
 
-    public void setTipoElemento(TipoElemento tipoElemento) {
+    public Elemento setTipoElemento(TipoElemento tipoElemento) {
         this.tipoElemento = tipoElemento;
+        return this;
     }
 
 }

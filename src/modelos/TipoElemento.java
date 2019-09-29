@@ -21,16 +21,23 @@ public class TipoElemento {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public TipoElemento setID(Integer ID) {
         this.ID = ID;
+        return this;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public TipoElemento setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoElemento{" + "ID=" + ID + ", descripcion=" + descripcion + '}';
     }
 
 }

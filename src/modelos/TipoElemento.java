@@ -5,6 +5,8 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author MrRainx
@@ -13,6 +15,19 @@ public class TipoElemento {
 
     private Integer ID;
     private String descripcion;
+    private ArrayList<TipoElemento> lista;
+    public TipoElemento(Integer ID, String descripcion) {
+        this.ID = ID;
+        this.descripcion = descripcion;
+    }
+
+    public ArrayList<TipoElemento> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<TipoElemento> lista) {
+        this.lista = lista;
+    }
 
     public TipoElemento() {
     }
@@ -31,6 +46,11 @@ public class TipoElemento {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoElemento{" + "ID=" + ID + ", descripcion=" + descripcion + '}';
     }
 
 }

@@ -5,6 +5,9 @@
  */
 package vista.Hotel;
 
+import java.util.ArrayList;
+import modelos.TipoElemento;
+
 /**
  *
  * @author Skull
@@ -14,10 +17,24 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrmElementosHabitacion
      */
+    private ArrayList<TipoElemento> tipoElementos;
+    private TipoElemento tipoElemento;
     public FrmElementosHabitacion() {
         initComponents();
+        cargarTiposElementos();
     }
-
+    private void cargarTiposElementos(){
+        tipoElemento=new TipoElemento();
+        tipoElementos=tipoElemento.getLista();
+        cmb_Tipos.removeAllItems();
+        if (tipoElementos==null) {
+            this.dispose();
+        } else {
+        tipoElementos.forEach((tipoe) ->{
+            cmb_Tipos.addItem(String.valueOf(tipoe.getID()) +" "+tipoe.getDescripcion());
+        });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +50,7 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmb_Tipos = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -56,7 +73,7 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Tipo:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_Tipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Cancelar");
 
@@ -110,7 +127,7 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
                                         .addComponent(jButton2))
                                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cmb_Tipos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(29, 29, 29)
                                 .addComponent(jButton4)
                                 .addGap(29, 29, 29)
@@ -133,7 +150,7 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_Tipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -148,13 +165,13 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmb_Tipos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

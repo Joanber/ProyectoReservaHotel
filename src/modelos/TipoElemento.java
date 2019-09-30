@@ -15,10 +15,7 @@ public class TipoElemento {
 
     private String descripcion;
     private ArrayList<TipoElemento> lista;
-    public TipoElemento(Integer ID, String descripcion) {
-        this.ID = ID;
-        this.descripcion = descripcion;
-    }
+    
 
     public ArrayList<TipoElemento> getLista() {
         return lista;
@@ -42,7 +39,7 @@ public class TipoElemento {
 
     @Override
     public String toString() {
-        return "TipoElemento{" + "ID=" + ID + ", descripcion=" + descripcion + '}';
+        return "TipoElemento{ descripcion=" + descripcion + '}';
     }
 
 }

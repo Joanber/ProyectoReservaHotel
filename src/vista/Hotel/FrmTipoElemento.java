@@ -30,25 +30,10 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
         Init();
     }
 
-    private void cargarDatosDefinidos() {
-        TipoElemento tipoElemento1 = new TipoElemento(1, "Prueba1");
-        TipoElemento tipoElemento2 = new TipoElemento(2, "Prueba2");
-        TipoElemento tipoElemento3 = new TipoElemento(3, "Prueba3");
-        TipoElemento tipoElemento4 = new TipoElemento(4, "Prueba4");
-        tipoElementos.add(tipoElemento1);
-        tipoElementos.add(tipoElemento2);
-        tipoElementos.add(tipoElemento3);
-        tipoElementos.add(tipoElemento4);
-
-    }
 
     private void Init() {
         table = (DefaultTableModel) tb_elementos.getModel();
-        txt_id.setEnabled(false);
-        cargarDatosDefinidos();
-        CargarTabla();
-        int num = tipoElementos.size();
-        txt_id.setText("" + (num + 1));
+        
     }
 
     /**
@@ -69,8 +54,6 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
         tb_elementos = new javax.swing.JTable();
         btn_editar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -138,9 +121,6 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel4.setText("ID:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,9 +136,7 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(63, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -169,8 +147,7 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
                                 .addComponent(btn_editar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_eliminar))
-                            .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -178,11 +155,7 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -202,104 +175,35 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
-        int row = tb_elementos.getSelectedRow();
-
-        if (row != -1) {
-            int id = Integer.parseInt(txt_id.getText());
-            TipoElemento tipoe = null;
-            for (TipoElemento te : tipoElementos) {
-                if (te.getID().equals(id)) {
-                    tipoe = te;
-                }
-            }
-            if (tipoe != null) {
-                tipoElementos.remove(tipoe);
-                CargarTabla();
-                btn_nuevo.setEnabled(true);
-                limpiarCampos();
-                int num = tipoElementos.size();
-                txt_id.setText("" + (num + 1));
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Seleccione una fila", "Aviso", JOptionPane.ERROR_MESSAGE);
-            btn_nuevo.setEnabled(true);
-        }
+       
 
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
-        if (txt_descripcion.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Campo Vacio", "Aviso", JOptionPane.ERROR_MESSAGE);
-        } else {
-            tipoElemento = new TipoElemento();
-            tipoElemento.setID(Integer.parseInt(txt_id.getText()));
-            tipoElemento.setDescripcion(txt_descripcion.getText());
-            tipoElementos.add(tipoElemento);
-            limpiarCampos();
-            int num = tipoElementos.size();
-            txt_id.setText("" + (num + 1));
-            CargarTabla();
-        }
+       
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
     private void tb_elementosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_elementosMouseClicked
         // TODO add your handling code here:
-        btn_nuevo.setEnabled(false);
-        int fila = tb_elementos.getSelectedRow();
-        txt_id.setText(String.valueOf(tb_elementos.getValueAt(fila, 0)));
-        txt_descripcion.setText(String.valueOf(tb_elementos.getValueAt(fila, 1)));
+       
     }//GEN-LAST:event_tb_elementosMouseClicked
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
-        int row = tb_elementos.getSelectedRow();
 
-        if (row != -1) {
-            if (txt_descripcion.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Campo Vacio", "Aviso", JOptionPane.ERROR_MESSAGE);
-            } else {
-                int id = Integer.parseInt(txt_id.getText());
-                TipoElemento tipoe = null;
-                for (TipoElemento te : tipoElementos) {
-                    if (te.getID().equals(id)) {
-                        tipoe = te;
-                    }
-                }
-                if (tipoe != null) {
-                    tipoe.setDescripcion(txt_descripcion.getText());
-                    CargarTabla();
-                    btn_nuevo.setEnabled(true);
-                    limpiarCampos();
-                    int num = tipoElementos.size();
-                    txt_id.setText("" + (num + 1));
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Seleccione una fila", "Aviso", JOptionPane.ERROR_MESSAGE);
-            btn_nuevo.setEnabled(true);
-        }
+     
 
 
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         // TODO add your handling code here:
-        limpiarCampos();
     }//GEN-LAST:event_btn_limpiarActionPerformed
     private void limpiarCampos() {
-        txt_descripcion.setText("");
     }
 
-    private void CargarTabla() {
-        table.setRowCount(0);
-        for (TipoElemento tipoE : tipoElementos) {
-            table.addRow(new Object[]{
-                tipoE.getID(), tipoE.getDescripcion()
-            });
-        }
-
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
@@ -307,11 +211,9 @@ public class FrmTipoElemento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb_elementos;
     private javax.swing.JTextField txt_descripcion;
-    private javax.swing.JTextField txt_id;
     // End of variables declaration//GEN-END:variables
 
 }

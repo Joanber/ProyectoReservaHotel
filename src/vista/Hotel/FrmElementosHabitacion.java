@@ -17,24 +17,11 @@ public class FrmElementosHabitacion extends javax.swing.JInternalFrame {
     /**
      * Creates new form FrmElementosHabitacion
      */
-    private ArrayList<TipoElemento> tipoElementos;
-    private TipoElemento tipoElemento;
+  
     public FrmElementosHabitacion() {
         initComponents();
-        cargarTiposElementos();
     }
-    private void cargarTiposElementos(){
-        tipoElemento=new TipoElemento();
-        tipoElementos=tipoElemento.getLista();
-        cmb_Tipos.removeAllItems();
-        if (tipoElementos==null) {
-            this.dispose();
-        } else {
-        tipoElementos.forEach((tipoe) ->{
-            cmb_Tipos.addItem(String.valueOf(tipoe.getID()) +" "+tipoe.getDescripcion());
-        });
-        }
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

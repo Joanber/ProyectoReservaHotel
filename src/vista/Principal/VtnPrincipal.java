@@ -3,9 +3,7 @@ package vista.Principal;
 import vista.Hotel.FrmElementosHabitacion;
 import vista.Hotel.FrmHabitacion;
 import vista.cliente.VtnClientes;
-
-
-
+import vista.reserva.VtnReservas;
 
 /**
  *
@@ -149,27 +147,29 @@ public class VtnPrincipal extends javax.swing.JFrame {
 
     private void btnReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservacionesActionPerformed
         // TODO add your handling code here:
-        
+        VtnReservas vtnReservas = new VtnReservas(this);
+        this.desk.add(vtnReservas);
+        vtnReservas.show();
 
     }//GEN-LAST:event_btnReservacionesActionPerformed
 
     private void btnHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabitacionesActionPerformed
         // TODO add your handling code here:
-        FrmHabitacion frm=new FrmHabitacion();
+        FrmHabitacion frm = new FrmHabitacion();
         this.desk.add(frm);
         frm.show();
     }//GEN-LAST:event_btnHabitacionesActionPerformed
 
     private void btnElementosHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElementosHActionPerformed
         // TODO add your handling code here:
-        FrmElementosHabitacion frm=new FrmElementosHabitacion();
+        FrmElementosHabitacion frm = new FrmElementosHabitacion();
         this.desk.add(frm);
         frm.show();
     }//GEN-LAST:event_btnElementosHActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
-        VtnClientes vtn=new VtnClientes(this);
+        VtnClientes vtn = new VtnClientes(this);
         this.desk.add(vtn);
         vtn.show();
     }//GEN-LAST:event_btnClientesActionPerformed

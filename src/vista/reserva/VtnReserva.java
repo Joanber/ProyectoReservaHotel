@@ -10,6 +10,7 @@ import modelos.CONS_CLIENTE;
 import modelos.Cliente;
 import modelos.Habitacion;
 import modelos.Reserva;
+import vista.CONS_VTNS;
 
 /**
  *
@@ -122,7 +123,7 @@ public class VtnReserva extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         this.reserva = new Reserva();
-
+        this.habitacion.setEstado("RESERVADA");
         this.reserva.setCliente(cliente)
                 .setHabitacion(habitacion)
                 .setFechaHora()
@@ -133,6 +134,8 @@ public class VtnReserva extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "RESERVA EXITOSA\n VUELVA PRONTO", "Informacion", 1);
 
         this.dispose();
+
+        CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 

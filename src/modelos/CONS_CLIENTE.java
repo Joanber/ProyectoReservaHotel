@@ -22,6 +22,16 @@ public class CONS_CLIENTE {
                 .setCorreo("correo@correo.com")
                 .setContraseña("1234");
         clientes.add(cliente);
+
+        Reserva reserva = new Reserva();
+
+        reserva.setFechaHora();
+        reserva.setMetodoPago("EFECTIVO");
+        reserva.setHabitacion(CONS.HABITACIONES.get(0));
+        reserva.setCliente(cliente);
+
+        reservas.add(reserva);
+
     }
 
     public static Cliente login(String cedula, String password) {

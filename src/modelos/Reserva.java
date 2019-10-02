@@ -74,4 +74,8 @@ public class Reserva {
         return this;
     }
 
+    public String getFechaHora() {
+        return this.fecha.toString() + " / " + this.hora.toString();
+    }
+
 }

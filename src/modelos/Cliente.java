@@ -65,6 +65,10 @@ public class Cliente {
         return this;
     }
 
+    public String infoTabla() {
+        return "" + cedula + " " + nombres + " " + apellidos;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" + "cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + '}';

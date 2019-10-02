@@ -7,6 +7,7 @@ package modelos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -14,39 +15,31 @@ import java.util.List;
  */
 public class CONS {
 
-    public static final List<TipoElemento> TIPO_ELEMENTOS = new ArrayList<TipoElemento>();
-
     public static final List<Elemento> ELEMENTOS = new ArrayList<Elemento>();
 
     public static final List<Habitacion> HABITACIONES = new ArrayList<>();
 
     static {
-        TIPO_ELEMENTOS.add(new TipoElemento()
-                .setDescripcion("SERVICIO")
-        );
-        TIPO_ELEMENTOS.add(new TipoElemento()
-                .setDescripcion("OBJETO")
-        );
 
         Elemento cama = new Elemento()
                 .setNombre("Cama")
                 .setPrecio(20.0)
-                .setTipoElemento(TIPO_ELEMENTOS.get(0));
+                .setTipoElemento("OBJETO");
 
         Elemento refrigerador = new Elemento()
                 .setNombre("Refrigerador")
                 .setPrecio(30.0)
-                .setTipoElemento(TIPO_ELEMENTOS.get(0));
+                .setTipoElemento("OBJETO");
 
         Elemento baño = new Elemento()
                 .setNombre("Baño")
                 .setPrecio(10.0)
-                .setTipoElemento(TIPO_ELEMENTOS.get(0));
+                .setTipoElemento("OBJETO");
 
         Elemento telefono = new Elemento()
                 .setNombre("Telefono")
                 .setPrecio(10.0)
-                .setTipoElemento(TIPO_ELEMENTOS.get(0));
+                .setTipoElemento("OBJETO");
 
         ELEMENTOS.add(cama);
         ELEMENTOS.add(refrigerador);
@@ -55,7 +48,7 @@ public class CONS {
 
         Habitacion habitacion1 = new Habitacion();
         habitacion1.setDescripcion("PRUEBA 1")
-                .setEstado("DISPONIBLE")
+                .setEstado("RESERVADA")
                 .setElementos(new ArrayList<>(ELEMENTOS));
 
         Habitacion habitacion2 = new Habitacion();
@@ -86,16 +79,18 @@ public class CONS {
 
     }
 
-    public static void add(TipoElemento tipoElemento) {
-        TIPO_ELEMENTOS.add(tipoElemento);
-    }
-
     public static void add(Elemento elemento) {
         ELEMENTOS.add(elemento);
     }
 
     public static void add(Habitacion habitacion) {
         HABITACIONES.add(habitacion.setNumero(HABITACIONES.size() + 1));
+    }
+
+    public static List<Habitacion> getHabitacionesByEstado(String estado) {
+        return HABITACIONES.stream()
+                .filter(item -> item.getEstado().equals(estado))
+                .collect(Collectors.toList());
     }
 
 }

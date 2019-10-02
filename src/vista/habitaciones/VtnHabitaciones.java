@@ -15,7 +15,7 @@ import vista.login.Login;
  * @author MrRainx
  */
 public class VtnHabitaciones extends javax.swing.JFrame {
-    
+
     List<ItemHabitacion> habitaciones = new ArrayList<>();
 
     /**
@@ -23,17 +23,17 @@ public class VtnHabitaciones extends javax.swing.JFrame {
      */
     public VtnHabitaciones() {
         initComponents();
-        
-        CONS.HABITACIONES.forEach(obj -> {
+
+        CONS.getHabitacionesByEstado("DISPONIBLE").forEach(obj -> {
             habitaciones.add(new ItemHabitacion(this, obj));
         });
-           
+
         habitaciones.forEach(this.bg::add);
-        
+
         this.bg.updateUI();
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -127,7 +127,7 @@ public class VtnHabitaciones extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         // TODO add your handling code here:
-        
+
         Login login = new Login();
         login.setLocationRelativeTo(null);
         login.setVisible(true);

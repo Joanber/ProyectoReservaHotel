@@ -2,8 +2,6 @@ package vista.Principal;
 
 import vista.Hotel.FrmElementosHabitacion;
 import vista.Hotel.FrmHabitacion;
-import vista.Hotel.FrmTipoElemento;
-import vista.cliente.FormCliente;
 import vista.cliente.VtnClientes;
 
 
@@ -30,7 +28,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
         btnReservaciones = new javax.swing.JButton();
         btnHabitaciones = new javax.swing.JButton();
         btnElementosH = new javax.swing.JButton();
-        btnTipoElemento = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,20 +89,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnTipoElemento.setBackground(new java.awt.Color(204, 255, 204));
-        btnTipoElemento.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnTipoElemento.setForeground(new java.awt.Color(0, 0, 51));
-        btnTipoElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Interior_48px.png"))); // NOI18N
-        btnTipoElemento.setText("Tipo Elemento");
-        btnTipoElemento.setToolTipText("Registrar Persona");
-        btnTipoElemento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTipoElemento.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btnTipoElemento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTipoElementoActionPerformed(evt);
-            }
-        });
-
         btnClientes.setBackground(new java.awt.Color(204, 255, 204));
         btnClientes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnClientes.setForeground(new java.awt.Color(0, 0, 51));
@@ -131,8 +114,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnElementosH, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTipoElemento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -144,7 +125,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
                     .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnReservaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnElementosH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTipoElemento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -187,13 +167,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
         frm.show();
     }//GEN-LAST:event_btnElementosHActionPerformed
 
-    private void btnTipoElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoElementoActionPerformed
-        // TODO add your handling code here:
-        FrmTipoElemento frm=new FrmTipoElemento();
-        this.desk.add(frm);
-        frm.show();
-    }//GEN-LAST:event_btnTipoElementoActionPerformed
-
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
         VtnClientes vtn=new VtnClientes(this);
@@ -207,7 +180,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnElementosH;
     private javax.swing.JButton btnHabitaciones;
     private javax.swing.JButton btnReservaciones;
-    private javax.swing.JButton btnTipoElemento;
     public javax.swing.JDesktopPane desk;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

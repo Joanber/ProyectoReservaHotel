@@ -13,7 +13,7 @@ public class Elemento {
 
     private String nombre;
     private Double precio;
-    private TipoElemento tipoElemento;
+    private String tipoElemento;
 
     public Elemento() {
     }
@@ -36,11 +36,11 @@ public class Elemento {
         return this;
     }
 
-    public TipoElemento getTipoElemento() {
+    public String getTipoElemento() {
         return tipoElemento;
     }
 
-    public Elemento setTipoElemento(TipoElemento tipoElemento) {
+    public Elemento setTipoElemento(String tipoElemento) {
         this.tipoElemento = tipoElemento;
         return this;
     }

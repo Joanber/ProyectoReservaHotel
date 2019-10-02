@@ -6,9 +6,32 @@
 package modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CONS_CLIENTE {
 
     public static ArrayList<Cliente> clientes = new ArrayList<>();
+
+    public static List<Reserva> reservas = new ArrayList<>();
+
+    static {
+        Cliente cliente = new Cliente();
+        cliente.setCedula("0102030405")
+                .setNombres("Nombre Prueba")
+                .setApellidos("Apellidos Prueba")
+                .setCorreo("correo@correo.com")
+                .setContraseña("1234");
+        clientes.add(cliente);
+    }
+
+    public static Cliente login(String cedula, String password) {
+
+        return clientes.stream()
+                .filter(cliente -> cliente.getCedula().equals(cedula)
+                && cliente.getContraseña().equals(password)
+                ).findFirst()
+                .orElse(null);
+
+    }
 
 }

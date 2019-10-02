@@ -129,8 +129,9 @@ public class ItemHabitacion extends javax.swing.JPanel {
 
     private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        this.vtnPadre.bg.updateUI();
+        DetalleHabitacion detalleHabitacion = new DetalleHabitacion(habitacion);
+        detalleHabitacion.setVisible(true);
+        detalleHabitacion.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_btnDetallesActionPerformed
 

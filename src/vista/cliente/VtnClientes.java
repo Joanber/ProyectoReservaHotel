@@ -19,31 +19,34 @@ public class VtnClientes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VtnClientes
-     */ private final VtnPrincipal desktop;
-     private  ArrayList<Cliente> clientes;
-     private DefaultTableModel table;
+     */
+    private final VtnPrincipal desktop;
+    private ArrayList<Cliente> clientes;
+    private DefaultTableModel table;
+
     public VtnClientes(VtnPrincipal desktop) {
-        this.desktop=desktop;
+        this.desktop = desktop;
         initComponents();
-           Init();
+        Init();
     }
-     private void Init() {
+
+    private void Init() {
         table = (DefaultTableModel) tbClientes.getModel();
         cargarTabla();
     }
-     
-     public void cargarTabla(){
-         clientes=CONS_CLIENTE.getCons_cliente().getClientes();
-         table.setRowCount(0);
-         for (Cliente cliente : clientes) {
-             table.addRow(new Object[]{
-                 cliente.getCedula(),
-                 cliente.getNombres(),
-                 cliente.getApellidos(),
-                 cliente.getCorreo()
-             });
-         }
-     }
+
+    public void cargarTabla() {
+        clientes = CONS_CLIENTE.clientes;
+        table.setRowCount(0);
+        for (Cliente cliente : clientes) {
+            table.addRow(new Object[]{
+                cliente.getCedula(),
+                cliente.getNombres(),
+                cliente.getApellidos(),
+                cliente.getCorreo()
+            });
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,7 +160,7 @@ public class VtnClientes extends javax.swing.JInternalFrame {
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FormCliente frm=new FormCliente(desktop);
+        FormCliente frm = new FormCliente(desktop);
         this.desktop.desk.add(frm);
         frm.show();
 

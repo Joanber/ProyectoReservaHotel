@@ -20,12 +20,13 @@ public class FormCliente extends javax.swing.JInternalFrame {
      * Creates new form FormCliente
      */
     private final VtnPrincipal desktop;
-    private  ArrayList<Cliente> clientes;
+    private ArrayList<Cliente> clientes;
     private Cliente cliente;
+
     public FormCliente(VtnPrincipal desktop) {
-        this.desktop=desktop;
+        this.desktop = desktop;
         initComponents();
-        clientes=new ArrayList<>();
+        clientes = new ArrayList<>();
     }
 
     /**
@@ -188,19 +189,18 @@ public class FormCliente extends javax.swing.JInternalFrame {
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         // TODO add your handling code here:
-        cliente=new Cliente();
+        cliente = new Cliente();
         cliente.setCedula(txtCedula.getText());
         cliente.setApellidos(txtApellidos.getText());
         cliente.setNombres(txtNombres.getText());
         cliente.setCorreo(txtEmail.getText());
         cliente.setContraseña(txtContraseña.getText());
-        clientes.add(cliente);
-        CONS_CLIENTE.getCons_cliente().setClientes(clientes);
+        CONS_CLIENTE.clientes.add(cliente);
         this.dispose();
-        VtnClientes vtn=new VtnClientes(desktop);
+        VtnClientes vtn = new VtnClientes(desktop);
         this.desktop.desk.add(vtn);
         vtn.show();
-        
+
 
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 

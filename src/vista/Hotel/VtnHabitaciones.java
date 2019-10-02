@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.CONS;
 import modelos.Habitacion;
+import vista.CONS_VTNS;
 import vista.Principal.VtnPrincipal;
 
 /**
@@ -22,20 +23,23 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
      * Creates new form Habitacion
      */
     private final VtnPrincipal desktop;
-     private DefaultTableModel table;
-     private List<Habitacion> habitaciones;
+    private DefaultTableModel table;
+    private List<Habitacion> habitaciones;
+
     public VtnHabitaciones(VtnPrincipal desktop) {
-        this.desktop=desktop;
+        this.desktop = desktop;
         initComponents();
         Init();
+        CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
     }
 
     private void Init() {
         table = (DefaultTableModel) tbHabitaciones.getModel();
         cargarTabla();
     }
-     public void cargarTabla() {
-       habitaciones=CONS.HABITACIONES;
+
+    public void cargarTabla() {
+        habitaciones = CONS.HABITACIONES;
         table.setRowCount(0);
         for (Habitacion habitacion : habitaciones) {
             table.addRow(new Object[]{
@@ -47,6 +51,7 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
             });
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,25 +173,25 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
         frmHabitaciones frm = new frmHabitaciones(desktop, null);
         this.desktop.desk.add(frm);
         frm.show();
-        
+
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-         int row = tbHabitaciones.getSelectedRow();
+        int row = tbHabitaciones.getSelectedRow();
 
         if (row != -1) {
             int numero = Integer.parseInt(tbHabitaciones.getValueAt(row, 0).toString());
-            Habitacion habitacion=null;
-            
-            for(Habitacion hab:CONS.HABITACIONES){
-                if(hab.getNumero().equals(numero)){
-                    habitacion=hab;
+            Habitacion habitacion = null;
+
+            for (Habitacion hab : CONS.HABITACIONES) {
+                if (hab.getNumero().equals(numero)) {
+                    habitacion = hab;
                 }
             }
 
             this.dispose();
-            frmHabitaciones frm=new frmHabitaciones(desktop, habitacion);
+            frmHabitaciones frm = new frmHabitaciones(desktop, habitacion);
             this.desktop.desk.add(frm);
             frm.show();
         } else {
@@ -196,20 +201,21 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-         int row = tbHabitaciones.getSelectedRow();
+        int row = tbHabitaciones.getSelectedRow();
 
         if (row != -1) {
             int numero = Integer.parseInt(tbHabitaciones.getValueAt(row, 0).toString());
-            Habitacion habitacion=null;
-            
-            for(Habitacion hab:CONS.HABITACIONES){
-                if(hab.getNumero().equals(numero)){
-                    habitacion=hab;
+            Habitacion habitacion = null;
+
+            for (Habitacion hab : CONS.HABITACIONES) {
+                if (hab.getNumero().equals(numero)) {
+                    habitacion = hab;
                 }
             }
-            if(habitacion!=null){
+            if (habitacion != null) {
                 CONS.HABITACIONES.remove(habitacion);
                 cargarTabla();
+                CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
             }
 
         } else {

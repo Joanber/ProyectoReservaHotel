@@ -12,6 +12,7 @@ import modelos.CONS_CLIENTE;
 import modelos.Cliente;
 import modelos.Habitacion;
 import modelos.Reserva;
+import vista.CONS_VTNS;
 import vista.Principal.VtnPrincipal;
 
 /**
@@ -188,6 +189,8 @@ public class FormReserva extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Se guardó correctamente!");
 
         irAlista();
+
+        CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import modelos.CONS;
 import modelos.Elemento;
 import modelos.Habitacion;
+import vista.CONS_VTNS;
 import vista.Principal.VtnPrincipal;
 
 /**
@@ -33,7 +34,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         this.habitacion = habitacion;
         this.desktop = desktop;
         initComponents();
-        spnNumero.setValue(CONS.HABITACIONES.size()+1);
+        spnNumero.setValue(CONS.HABITACIONES.size() + 1);
         spnNumero.setEnabled(false);
         cargarHabitacionArr();
     }
@@ -66,24 +67,24 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         }
         return listaElementos;
     }
-    
-    private void cargarHabitacionArr(){
-        if(habitacion!=null){
-            modeloElementos =new DefaultListModel();
-            
+
+    private void cargarHabitacionArr() {
+        if (habitacion != null) {
+            modeloElementos = new DefaultListModel();
+
             spnNumero.setValue(habitacion.getNumero());
             txtDescripcion.setText(habitacion.getDescripcion());
             txtPrecio.setText(String.valueOf(habitacion.getPrecio()));
             cmbEstado.setSelectedItem(habitacion.getEstado());
             System.out.println(habitacion.getEstado());
-            for (Elemento elemento :habitacion.getElementos()) {
-                modeloElementos.addElement(elemento.getNombre()+" : "+elemento.getPrecio()+" : "+elemento.getTipoElemento());
-                arrayElementos.add(elemento.getNombre()+" : "+elemento.getPrecio()+" : "+elemento.getTipoElemento());
+            for (Elemento elemento : habitacion.getElementos()) {
+                modeloElementos.addElement(elemento.getNombre() + " : " + elemento.getPrecio() + " : " + elemento.getTipoElemento());
+                arrayElementos.add(elemento.getNombre() + " : " + elemento.getPrecio() + " : " + elemento.getTipoElemento());
             }
             listElementos.setModel(modeloElementos);
         }
     }
-    
+
     private void agregarListElementos() {
         modeloElementos = new DefaultListModel();
         if (txtNombre.getText().equals("") || txtPrecioElemento.getText().equals("")
@@ -104,27 +105,28 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         }
 
     }
-    private void eliminarItemList(){
+
+    private void eliminarItemList() {
         try {
-                String indice;
-                if(listElementos.getSelectedIndex()==-1){
-                    JOptionPane.showMessageDialog(this,"Seleccione el elemneto a quitar", "ERROR", JOptionPane.ERROR_MESSAGE);
-                    
-                }else{
-                    indice=listElementos.getSelectedValue();
-                    modeloElementos.removeElement(indice);
-                    arrayElementos.remove(indice);
-                    listElementos.setModel(modeloElementos);
-                    recargarElementosList();
-                }
+            String indice;
+            if (listElementos.getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(this, "Seleccione el elemneto a quitar", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+            } else {
+                indice = listElementos.getSelectedValue();
+                modeloElementos.removeElement(indice);
+                arrayElementos.remove(indice);
+                listElementos.setModel(modeloElementos);
+                recargarElementosList();
+            }
         } catch (Exception e) {
         }
     }
 
-    private void recargarElementosList(){
+    private void recargarElementosList() {
         modeloElementos.removeAllElements();
         for (int i = 0; i < arrayElementos.size(); i++) {
-           modeloElementos.addElement(arrayElementos.get(i));
+            modeloElementos.addElement(arrayElementos.get(i));
         }
     }
 
@@ -339,6 +341,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
     private void bntAgregarElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAgregarElementoActionPerformed
         // TODO add your handling code here:
         agregarListElementos();
+        CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
     }//GEN-LAST:event_bntAgregarElementoActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -348,16 +351,16 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
                 || spnNumero.getValue().equals("0") || listElementos.getModel().getSize() < 1) {
             JOptionPane.showMessageDialog(this, "Campos vacios y/o sin elementos", "Aviso", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (habitacion==null) {
-            CONS.add(obtenerHabitacion());
+            if (habitacion == null) {
+                CONS.add(obtenerHabitacion());
             } else {
-                Habitacion habitacionn=null;
-                for(Habitacion hab:CONS.HABITACIONES){
+                Habitacion habitacionn = null;
+                for (Habitacion hab : CONS.HABITACIONES) {
                     if (hab.getNumero().equals(habitacion.getNumero())) {
-                        habitacionn=hab;
+                        habitacionn = hab;
                     }
                 }
-                if (habitacionn!=null) {
+                if (habitacionn != null) {
                     habitacionn.setDescripcion(txtDescripcion.getText());
                     habitacionn.setPrecio(Double.parseDouble(txtPrecio.getText()));
                     habitacionn.setEstado(cmbEstado.getSelectedItem().toString());
@@ -365,12 +368,15 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
                 }
             }
             irVtnHabitaciones();
+            CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
         }
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void BtnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnQuitarActionPerformed
         // TODO add your handling code here:
         eliminarItemList();
+
+        CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
     }//GEN-LAST:event_BtnQuitarActionPerformed
 
 

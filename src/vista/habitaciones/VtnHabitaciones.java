@@ -5,17 +5,17 @@
  */
 package vista.habitaciones;
 
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import modelos.CONS;
+import modelos.Habitacion;
 import vista.login.Login;
 
 /**
  *
  * @author MrRainx
  */
-public final class VtnHabitaciones extends javax.swing.JFrame {
+public class VtnHabitaciones extends javax.swing.JFrame {
 
     List<ItemHabitacion> habitaciones = new ArrayList<>();
 
@@ -32,12 +32,13 @@ public final class VtnHabitaciones extends javax.swing.JFrame {
     public void cargarHabitaciones() {
 
         this.bg.removeAll();
+        //this.bg.repaint();
+        //this.bg
 
-        CONS.HABITACIONES.forEach(
-                obj -> habitaciones.add(new ItemHabitacion(obj))
-        );
-
-        habitaciones.forEach(this.bg::add);
+        for (Habitacion habitacion : CONS.HABITACIONES) {
+            ItemHabitacion itemHabitacion = new ItemHabitacion(habitacion);
+            this.bg.add(itemHabitacion);
+        }
 
     }
 
@@ -134,7 +135,7 @@ public final class VtnHabitaciones extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.setVisible(false);
         Login login = new Login();
         login.setLocationRelativeTo(null);
         login.setVisible(true);

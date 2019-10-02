@@ -27,7 +27,7 @@ public class VtnHabitaciones extends javax.swing.JFrame {
         CONS.HABITACIONES.forEach(obj -> {
             habitaciones.add(new ItemHabitacion(this, obj));
         });
-        
+           
         habitaciones.forEach(this.bg::add);
         
         this.bg.updateUI();

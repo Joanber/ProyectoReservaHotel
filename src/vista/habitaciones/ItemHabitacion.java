@@ -71,7 +71,7 @@ public class ItemHabitacion extends javax.swing.JPanel {
         txtElementos.setEditable(false);
         txtElementos.setColumns(20);
         txtElementos.setLineWrap(true);
-        txtElementos.setRows(5);
+        txtElementos.setRows(2);
         jScrollPane1.setViewportView(txtElementos);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

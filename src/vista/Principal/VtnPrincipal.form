@@ -78,8 +78,6 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnElementosH" min="-2" pref="113" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnTipoElemento" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnClientes" min="-2" pref="115" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -93,7 +91,6 @@
                       <Component id="btnHabitaciones" max="32767" attributes="0"/>
                       <Component id="btnReservaciones" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnElementosH" max="32767" attributes="0"/>
-                      <Component id="btnTipoElemento" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnClientes" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -169,29 +166,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnElementosHActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnTipoElemento">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="ff" red="cc" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vista/img/Interior_48px.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Tipo Elemento"/>
-            <Property name="toolTipText" type="java.lang.String" value="Registrar Persona"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTipoElementoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClientes">

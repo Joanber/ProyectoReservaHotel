@@ -6,6 +6,7 @@
 package vista.cliente;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.CONS_CLIENTE;
 import modelos.Cliente;
@@ -33,6 +34,13 @@ public class VtnClientes extends javax.swing.JInternalFrame {
     private void Init() {
         table = (DefaultTableModel) tbClientes.getModel();
         cargarTabla();
+    }
+
+    public void DatosDefault() {
+        Cliente cli1 = new Cliente("PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA");
+        Cliente cli2 = new Cliente("010", "DARWIN", "CARPIO", "prueba@gamil.com", "12345");
+        CONS_CLIENTE.clientes.add(cli1);
+        CONS_CLIENTE.clientes.add(cli2);
     }
 
     public void cargarTabla() {
@@ -155,12 +163,13 @@ public class VtnClientes extends javax.swing.JInternalFrame {
     private void tbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMouseClicked
         // TODO add your handling code here:
 
+
     }//GEN-LAST:event_tbClientesMouseClicked
 
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FormCliente frm = new FormCliente(desktop);
+        FormCliente frm = new FormCliente(desktop, null);
         this.desktop.desk.add(frm);
         frm.show();
 
@@ -168,11 +177,45 @@ public class VtnClientes extends javax.swing.JInternalFrame {
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
+        int row = tbClientes.getSelectedRow();
+
+        if (row != -1) {
+            String cedula = tbClientes.getValueAt(row, 0).toString();
+            Cliente cliente = null;
+            for (Cliente cli : CONS_CLIENTE.clientes) {
+                if (cli.getCedula().equals(cedula)) {
+                    cliente = cli;
+                }
+            }
+            this.dispose();
+            FormCliente frm = new FormCliente(desktop, cliente);
+            this.desktop.desk.add(frm);
+            frm.show();
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
+        int row = tbClientes.getSelectedRow();
+
+        if (row != -1) {
+            String cedula = tbClientes.getValueAt(row, 0).toString();
+            Cliente cliente = null;
+            for (Cliente cli : CONS_CLIENTE.clientes) {
+                if (cli.getCedula().equals(cedula)) {
+                    cliente = cli;
+                }
+            }
+            if (cliente != null) {
+                CONS_CLIENTE.clientes.remove(cliente);
+                cargarTabla();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_btn_eliminarActionPerformed
 

@@ -20,6 +20,15 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String cedula, String nombres, String apellidos, String correo, String contraseña) {
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.contraseña = contraseña;
+    }
+    
+
     public String getCedula() {
         return cedula;
     }

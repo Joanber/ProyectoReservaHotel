@@ -5,11 +5,17 @@
  */
 package vista.habitaciones;
 
+import java.util.ArrayList;
+import java.util.List;
+import modelos.CONS;
+
 /**
  *
  * @author MrRainx
  */
 public class VtnHabitaciones extends javax.swing.JFrame {
+
+    List<ItemHabitacion> habitaciones = new ArrayList<>();
 
     /**
      * Creates new form VtnHabitaciones
@@ -17,28 +23,13 @@ public class VtnHabitaciones extends javax.swing.JFrame {
     public VtnHabitaciones() {
         initComponents();
 
-        ItemHabitacion item = new ItemHabitacion(this, 1);
-        ItemHabitacion item2 = new ItemHabitacion(this, 2);
-        ItemHabitacion item3 = new ItemHabitacion(this, 3);
-        ItemHabitacion item4 = new ItemHabitacion(this, 4);
-        ItemHabitacion item5 = new ItemHabitacion(this, 5);
-        ItemHabitacion item6 = new ItemHabitacion(this, 6);
-        ItemHabitacion item7 = new ItemHabitacion(this, 7);
-        ItemHabitacion item8 = new ItemHabitacion(this, 8);
-        ItemHabitacion item9 = new ItemHabitacion(this, 9);
+        CONS.HABITACIONES.forEach(obj -> {
+            habitaciones.add(new ItemHabitacion(this, obj));
+        });
 
-        this.bg.add(item);
-        this.bg.add(item2);
-        this.bg.add(item3);
-        this.bg.add(item4);
-        this.bg.add(item5);
-        this.bg.add(item6);
-        this.bg.add(item7);
-        this.bg.add(item8);
-        this.bg.add(item9);
+        habitaciones.forEach(this.bg::add);
 
         this.bg.updateUI();
-
 
     }
 
@@ -141,15 +132,11 @@ public class VtnHabitaciones extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VtnHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VtnHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VtnHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VtnHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */

@@ -5,6 +5,8 @@
  */
 package vista.habitaciones;
 
+import modelos.Habitacion;
+
 /**
  *
  * @author MrRainx
@@ -12,12 +14,22 @@ package vista.habitaciones;
 public class ItemHabitacion extends javax.swing.JPanel {
 
     private VtnHabitaciones vtnPadre;
-    private int numero;
+    private Habitacion habitacion;
+    private String items = "Detalles de la Habitacion: \n";
 
-    public ItemHabitacion(VtnHabitaciones vtnPadre, int numero) {
+    public ItemHabitacion(VtnHabitaciones vtnPadre, Habitacion habitacion) {
         initComponents();
         this.vtnPadre = vtnPadre;
-        this.jLabel1.setText("" + numero);
+        this.habitacion = habitacion;
+
+        this.lblNumero.setText(habitacion.getNumero() + "");
+
+        habitacion.getElementos().forEach(item -> {
+            items += item.getNombre() + " | ";
+        });
+
+        this.txtElementos.setText(items);
+
     }
 
     /**
@@ -30,10 +42,10 @@ public class ItemHabitacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btnDetalles = new javax.swing.JButton();
+        lblNumero = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtElementos = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 204));
@@ -41,25 +53,26 @@ public class ItemHabitacion extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(900, 80));
         setPreferredSize(new java.awt.Dimension(900, 80));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 255)));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 153, 255)));
 
-        jButton1.setText("Detalles");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDetalles.setText("Detalles");
+        btnDetalles.setBorderPainted(false);
+        btnDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDetallesActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Numero");
+        lblNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNumero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumero.setText("Numero");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtElementos.setEditable(false);
+        txtElementos.setColumns(20);
+        txtElementos.setLineWrap(true);
+        txtElementos.setRows(5);
+        jScrollPane1.setViewportView(txtElementos);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -72,12 +85,12 @@ public class ItemHabitacion extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                    .addComponent(lblNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnDetalles)
                 .addGap(8, 8, 8))
         );
         jPanel1Layout.setVerticalGroup(
@@ -91,9 +104,9 @@ public class ItemHabitacion extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 8, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnDetalles))
+                            .addComponent(lblNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -114,20 +127,20 @@ public class ItemHabitacion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         this.vtnPadre.bg.updateUI();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDetallesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnDetalles;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblNumero;
+    private javax.swing.JTextArea txtElementos;
     // End of variables declaration//GEN-END:variables
 }

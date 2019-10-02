@@ -15,6 +15,7 @@ public class Habitacion {
 
     private Integer numero;
     private String descripcion;
+    private String estado;
     private Double precio;
 
     private List<Elemento> elementos;
@@ -26,16 +27,27 @@ public class Habitacion {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public Habitacion setNumero(Integer numero) {
         this.numero = numero;
+        return this;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public Habitacion setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+        return this;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public Habitacion setEstado(String estado) {
+        this.estado = estado;
+        return this;
     }
 
     public Double getPrecio() {
@@ -49,16 +61,18 @@ public class Habitacion {
         return this.precio;
     }
 
-    public void setPrecio(Double precio) {
+    public Habitacion setPrecio(Double precio) {
         this.precio = precio;
+        return this;
     }
 
     public List<Elemento> getElementos() {
         return elementos;
     }
 
-    public void setElementos(List<Elemento> elementos) {
+    public Habitacion setElementos(List<Elemento> elementos) {
         this.elementos = elementos;
+        return this;
     }
 
 }

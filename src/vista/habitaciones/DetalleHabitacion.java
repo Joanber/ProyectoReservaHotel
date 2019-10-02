@@ -29,14 +29,12 @@ public class DetalleHabitacion extends javax.swing.JFrame {
 
         detalles += "- OBJETOS: \n";
 
-        generarDetalle("OBJETO");
+        detalles += habitacion.getElementosBy("OBJETO");
 
         detalles += "- SERVICIOS: \n";
-        generarDetalle("SERVICIO");
+        detalles += habitacion.getElementosBy("SERVICIO");
 
         this.txtDetalles.setText(detalles);
-
-        System.out.println(this.habitacion.getEstado());
 
         if (this.habitacion.getEstado().equals("DISPONIBLE")) {
             this.btnReservar.setEnabled(true);
@@ -44,13 +42,6 @@ public class DetalleHabitacion extends javax.swing.JFrame {
             this.btnReservar.setEnabled(false);
         }
 
-    }
-
-    private void generarDetalle(String aguja) {
-        this.habitacion.getElementos()
-                .stream()
-                .filter(item -> item.getTipoElemento().equals(aguja))
-                .forEach(item -> detalles += "       -" + item.getNombre() + "\n");
     }
 
     @SuppressWarnings("unchecked")

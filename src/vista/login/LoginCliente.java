@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import modelos.CONS_CLIENTE;
 import modelos.Cliente;
 import modelos.Habitacion;
+import vista.reserva.VtnReserva;
 
 /**
  *
@@ -114,7 +115,10 @@ public class LoginCliente extends javax.swing.JFrame {
         if (cliente == null) {
             this.lblError.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "MENSAJE");
+            this.dispose();
+            VtnReserva vtnReserva = new VtnReserva(habitacion, cliente);
+            vtnReserva.setLocationRelativeTo(null);
+            vtnReserva.setVisible(true);
         }
 
     }//GEN-LAST:event_btnIngresarActionPerformed

@@ -70,4 +70,16 @@ public class Cliente {
         return "Cliente{" + "cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + '}';
     }
 
+    public String infoTextArea() {
+        return "Datos del Cliente: \n\n"
+                + "Cedula: \n"
+                + "  " + cedula + "\n"
+                + "Nombres: \n"
+                + "  " + nombres + "\n"
+                + "Apellidos: \n"
+                + "  " + apellidos + "\n"
+                + "Correo: \n"
+                + "  " + correo + "\n";
+    }
+
 }

@@ -6,6 +6,8 @@
 package modelos;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -73,6 +75,39 @@ public class Habitacion {
     public Habitacion setElementos(List<Elemento> elementos) {
         this.elementos = elementos;
         return this;
+    }
+
+    public String infoTextArea() {
+        String texto = "Informacion de la Habitacion:\n\n";
+
+        texto += "Descripcion: \n";
+        texto += this.descripcion + "\n\n";
+        texto += "OBJECTOS: \n";
+        texto += getElementosBy("OBJETO");
+        texto += "SERVICIOS: \n";
+        texto += getElementosBy("SERVICIO");
+        texto += "Precio por Noche:\n";
+        texto += "   -" + this.getPrecio();
+
+        return texto;
+    }
+
+    public String getElementosBy(String tipo) {
+        String elementosStr = "";
+
+        List<Elemento> result = this.elementos.stream()
+                .filter(item -> item.getTipoElemento().equals(tipo))
+                .collect(Collectors.toList());
+
+        if (result.isEmpty()) {
+            elementosStr += "   -NINGUNO\n";
+        }
+
+        for (Elemento elemento : result) {
+            elementosStr += "   -" + elemento.getNombre() + "\n";
+        }
+
+        return elementosStr;
     }
 
 }

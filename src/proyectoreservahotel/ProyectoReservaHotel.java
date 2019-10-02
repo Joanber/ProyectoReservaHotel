@@ -8,8 +8,8 @@ package proyectoreservahotel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
+import vista.CONS_VTNS;
 import vista.habitaciones.VtnHabitaciones;
-import vista.login.Login;
 
 /**
  *
@@ -33,7 +33,7 @@ public class ProyectoReservaHotel {
                 }
             }
 
-            VtnHabitaciones vtn = new VtnHabitaciones();
+            VtnHabitaciones vtn = CONS_VTNS.vtnHabitaciones;
             vtn.setLocationRelativeTo(null);
             vtn.setVisible(true);
 

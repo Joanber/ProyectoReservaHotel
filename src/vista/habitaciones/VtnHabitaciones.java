@@ -5,6 +5,7 @@
  */
 package vista.habitaciones;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import modelos.CONS;
@@ -14,7 +15,7 @@ import vista.login.Login;
  *
  * @author MrRainx
  */
-public class VtnHabitaciones extends javax.swing.JFrame {
+public final class VtnHabitaciones extends javax.swing.JFrame {
 
     List<ItemHabitacion> habitaciones = new ArrayList<>();
 
@@ -24,13 +25,19 @@ public class VtnHabitaciones extends javax.swing.JFrame {
     public VtnHabitaciones() {
         initComponents();
 
-        CONS.getHabitacionesByEstado("DISPONIBLE").forEach(obj -> {
-            habitaciones.add(new ItemHabitacion(this, obj));
-        });
+        cargarHabitaciones();
+
+    }
+
+    public void cargarHabitaciones() {
+
+        this.bg.removeAll();
+
+        CONS.HABITACIONES.forEach(
+                obj -> habitaciones.add(new ItemHabitacion(obj))
+        );
 
         habitaciones.forEach(this.bg::add);
-
-        this.bg.updateUI();
 
     }
 

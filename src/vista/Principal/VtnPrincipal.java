@@ -4,6 +4,7 @@ import vista.Hotel.FrmElementosHabitacion;
 import vista.Hotel.VtnHabitaciones;
 import vista.cliente.VtnClientes;
 import vista.login.Login;
+import vista.reserva.VtnReservas;
 
 /**
  *
@@ -148,6 +149,9 @@ public class VtnPrincipal extends javax.swing.JFrame {
     private void btnReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservacionesActionPerformed
         // TODO add your handling code here:
 
+        VtnReservas vtnReservas = new VtnReservas(this);
+        this.desk.add(vtnReservas);
+        vtnReservas.show();
 
     }//GEN-LAST:event_btnReservacionesActionPerformed
 
@@ -157,6 +161,14 @@ public class VtnPrincipal extends javax.swing.JFrame {
         this.desk.add(frm);
         frm.show();
     }//GEN-LAST:event_btnHabitacionesActionPerformed
+
+
+    private void btnElementosHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElementosHActionPerformed
+        // TODO add your handling code here:
+        FrmElementosHabitacion frm = new FrmElementosHabitacion();
+        this.desk.add(frm);
+        frm.show();
+    }//GEN-LAST:event_btnElementosHActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:

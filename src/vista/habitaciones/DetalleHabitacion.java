@@ -6,6 +6,7 @@
 package vista.habitaciones;
 
 import modelos.Habitacion;
+import vista.CONS_VTNS;
 import vista.login.LoginCliente;
 
 /**
@@ -147,6 +148,7 @@ public class DetalleHabitacion extends javax.swing.JFrame {
         loginCliente.setLocationRelativeTo(this);
         loginCliente.setVisible(true);
         this.dispose();
+        CONS_VTNS.vtnHabitaciones.cargarHabitaciones();
     }//GEN-LAST:event_btnReservarActionPerformed
 
 

@@ -1,11 +1,9 @@
 package vista.Principal;
 
 import vista.Hotel.FrmElementosHabitacion;
-import vista.Hotel.FrmHabitacion;
+import vista.Hotel.VtnHabitaciones;
 import vista.cliente.VtnClientes;
-
-
-
+import vista.login.Login;
 
 /**
  *
@@ -27,8 +25,8 @@ public class VtnPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnReservaciones = new javax.swing.JButton();
         btnHabitaciones = new javax.swing.JButton();
-        btnElementosH = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,20 +73,6 @@ public class VtnPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnElementosH.setBackground(new java.awt.Color(204, 255, 204));
-        btnElementosH.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnElementosH.setForeground(new java.awt.Color(0, 0, 51));
-        btnElementosH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Armchair_48px.png"))); // NOI18N
-        btnElementosH.setText(" Elementos H");
-        btnElementosH.setToolTipText("Registrar Persona");
-        btnElementosH.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnElementosH.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btnElementosH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnElementosHActionPerformed(evt);
-            }
-        });
-
         btnClientes.setBackground(new java.awt.Color(204, 255, 204));
         btnClientes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnClientes.setForeground(new java.awt.Color(0, 0, 51));
@@ -103,6 +87,20 @@ public class VtnPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnCerrar.setBackground(new java.awt.Color(204, 255, 204));
+        btnCerrar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(0, 0, 51));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/salir.png"))); // NOI18N
+        btnCerrar.setText("CERRAR SESIÓN");
+        btnCerrar.setToolTipText("");
+        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,10 +110,10 @@ public class VtnPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnElementosH, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,8 +122,8 @@ public class VtnPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnReservaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnElementosH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -149,35 +147,37 @@ public class VtnPrincipal extends javax.swing.JFrame {
 
     private void btnReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservacionesActionPerformed
         // TODO add your handling code here:
-        
+
 
     }//GEN-LAST:event_btnReservacionesActionPerformed
 
     private void btnHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabitacionesActionPerformed
         // TODO add your handling code here:
-        FrmHabitacion frm=new FrmHabitacion();
+        VtnHabitaciones frm = new VtnHabitaciones(this);
         this.desk.add(frm);
         frm.show();
     }//GEN-LAST:event_btnHabitacionesActionPerformed
 
-    private void btnElementosHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElementosHActionPerformed
-        // TODO add your handling code here:
-        FrmElementosHabitacion frm=new FrmElementosHabitacion();
-        this.desk.add(frm);
-        frm.show();
-    }//GEN-LAST:event_btnElementosHActionPerformed
-
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
-        VtnClientes vtn=new VtnClientes(this);
+        VtnClientes vtn = new VtnClientes(this);
         this.desk.add(vtn);
         vtn.show();
     }//GEN-LAST:event_btnClientesActionPerformed
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Login login = new Login();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnClientes;
-    private javax.swing.JButton btnElementosH;
     private javax.swing.JButton btnHabitaciones;
     private javax.swing.JButton btnReservaciones;
     public javax.swing.JDesktopPane desk;

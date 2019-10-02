@@ -22,6 +22,13 @@ public class CONS_CLIENTE {
                 .setCorreo("correo@correo.com")
                 .setContraseña("1234");
         clientes.add(cliente);
+        Cliente ADMIN = new Cliente();
+        ADMIN.setCedula("ADMIN")
+                .setNombres("ADMINISTRADOR")
+                .setApellidos("ADMINISTRADOR")
+                .setCorreo("correo@correo.com")
+                .setContraseña("ADMIN");
+        clientes.add(ADMIN);
     }
 
     public static Cliente login(String cedula, String password) {

@@ -36,12 +36,7 @@ public class VtnClientes extends javax.swing.JInternalFrame {
         cargarTabla();
     }
 
-    public void DatosDefault() {
-        Cliente cli1 = new Cliente("PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA");
-        Cliente cli2 = new Cliente("010", "DARWIN", "CARPIO", "prueba@gamil.com", "12345");
-        CONS_CLIENTE.clientes.add(cli1);
-        CONS_CLIENTE.clientes.add(cli2);
-    }
+    
 
     public void cargarTabla() {
         clientes = CONS_CLIENTE.clientes;

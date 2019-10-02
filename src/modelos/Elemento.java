@@ -45,4 +45,10 @@ public class Elemento {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return  nombre + " : " + precio + " : " + tipoElemento;
+    }
+    
+
 }

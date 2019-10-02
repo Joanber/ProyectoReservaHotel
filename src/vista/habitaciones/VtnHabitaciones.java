@@ -134,7 +134,7 @@ public final class VtnHabitaciones extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         // TODO add your handling code here:
-
+        this.dispose();
         Login login = new Login();
         login.setLocationRelativeTo(null);
         login.setVisible(true);

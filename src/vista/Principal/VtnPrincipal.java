@@ -1,5 +1,6 @@
 package vista.Principal;
 
+import vista.CONS_VTNS;
 import vista.Hotel.FrmElementosHabitacion;
 import vista.Hotel.VtnHabitaciones;
 import vista.cliente.VtnClientes;
@@ -13,6 +14,7 @@ import vista.reserva.VtnReservas;
 public class VtnPrincipal extends javax.swing.JFrame {
 
     public VtnPrincipal() {
+
         initComponents();
         this.setTitle("Sistema de Reserva de Habitaciones");
         this.setLocationRelativeTo(null);
@@ -28,6 +30,7 @@ public class VtnPrincipal extends javax.swing.JFrame {
         btnHabitaciones = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        btnClientes1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +54,7 @@ public class VtnPrincipal extends javax.swing.JFrame {
         btnReservaciones.setForeground(new java.awt.Color(0, 0, 51));
         btnReservaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Bed_48px.png"))); // NOI18N
         btnReservaciones.setText("Reservarciones");
-        btnReservaciones.setToolTipText("Registrar Persona");
+        btnReservaciones.setToolTipText("Reservaciones");
         btnReservaciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnReservaciones.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnReservaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +68,7 @@ public class VtnPrincipal extends javax.swing.JFrame {
         btnHabitaciones.setForeground(new java.awt.Color(0, 0, 51));
         btnHabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Door_48px.png"))); // NOI18N
         btnHabitaciones.setText("Habitaciones");
-        btnHabitaciones.setToolTipText("Registrar Persona");
+        btnHabitaciones.setToolTipText("Registrar Habitaciones");
         btnHabitaciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHabitaciones.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnHabitaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +82,7 @@ public class VtnPrincipal extends javax.swing.JFrame {
         btnClientes.setForeground(new java.awt.Color(0, 0, 51));
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/clientes.png"))); // NOI18N
         btnClientes.setText("Clientes");
-        btnClientes.setToolTipText("Registrar Persona");
+        btnClientes.setToolTipText("Registrar Clientes");
         btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +105,20 @@ public class VtnPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnClientes1.setBackground(new java.awt.Color(204, 255, 204));
+        btnClientes1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnClientes1.setForeground(new java.awt.Color(0, 0, 51));
+        btnClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Door_48px.png"))); // NOI18N
+        btnClientes1.setText("Ir al Panel de Habitaciones");
+        btnClientes1.setToolTipText("");
+        btnClientes1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClientes1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btnClientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientes1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,6 +130,8 @@ public class VtnPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClientes1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -124,7 +143,8 @@ public class VtnPrincipal extends javax.swing.JFrame {
                     .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnReservaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -186,10 +206,19 @@ public class VtnPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void btnClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientes1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        vista.habitaciones.VtnHabitaciones vtn = CONS_VTNS.vtnHabitaciones;
+        vtn.setLocationRelativeTo(null);
+        vtn.setVisible(true);
+    }//GEN-LAST:event_btnClientes1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnClientes1;
     private javax.swing.JButton btnHabitaciones;
     private javax.swing.JButton btnReservaciones;
     public javax.swing.JDesktopPane desk;

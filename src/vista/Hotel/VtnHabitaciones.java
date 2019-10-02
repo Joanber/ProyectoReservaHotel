@@ -5,8 +5,8 @@
  */
 package vista.Hotel;
 
-import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.CONS;
 import modelos.Habitacion;
@@ -60,8 +60,8 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHabitaciones = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -112,9 +112,19 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
             tbHabitaciones.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
-        jButton3.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Editar");
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,9 +137,9 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNuevo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(btnEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btnEliminar)
                         .addGap(0, 570, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,8 +152,8 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnEliminar)
+                    .addComponent(btnEditar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(95, Short.MAX_VALUE))
@@ -158,13 +168,60 @@ public class VtnHabitaciones extends javax.swing.JInternalFrame {
         frmHabitaciones frm = new frmHabitaciones(desktop, null);
         this.desktop.desk.add(frm);
         frm.show();
+        
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+         int row = tbHabitaciones.getSelectedRow();
+
+        if (row != -1) {
+            int numero = Integer.parseInt(tbHabitaciones.getValueAt(row, 0).toString());
+            Habitacion habitacion=null;
+            
+            for(Habitacion hab:CONS.HABITACIONES){
+                if(hab.getNumero().equals(numero)){
+                    habitacion=hab;
+                }
+            }
+
+            this.dispose();
+            frmHabitaciones frm=new frmHabitaciones(desktop, habitacion);
+            this.desktop.desk.add(frm);
+            frm.show();
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+         int row = tbHabitaciones.getSelectedRow();
+
+        if (row != -1) {
+            int numero = Integer.parseInt(tbHabitaciones.getValueAt(row, 0).toString());
+            Habitacion habitacion=null;
+            
+            for(Habitacion hab:CONS.HABITACIONES){
+                if(hab.getNumero().equals(numero)){
+                    habitacion=hab;
+                }
+            }
+            if(habitacion!=null){
+                CONS.HABITACIONES.remove(habitacion);
+                cargarTabla();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbHabitaciones;

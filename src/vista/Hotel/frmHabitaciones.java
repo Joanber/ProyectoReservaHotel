@@ -33,11 +33,13 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         this.habitacion = habitacion;
         this.desktop = desktop;
         initComponents();
+        spnNumero.setValue(CONS.HABITACIONES.size()+1);
+        spnNumero.setEnabled(false);
+        cargarHabitacionArr();
     }
 
     private Habitacion obtenerHabitacion() {
         Habitacion habit = new Habitacion();
-        habit.setNumero(Integer.parseInt(spnNumero.getValue().toString()));
         habit.setDescripcion(txtDescripcion.getText());
         habit.setPrecio(Double.parseDouble(txtPrecio.getText()));
         habit.setEstado(cmbEstado.getSelectedItem().toString());
@@ -64,7 +66,24 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         }
         return listaElementos;
     }
-
+    
+    private void cargarHabitacionArr(){
+        if(habitacion!=null){
+            modeloElementos =new DefaultListModel();
+            
+            spnNumero.setValue(habitacion.getNumero());
+            txtDescripcion.setText(habitacion.getDescripcion());
+            txtPrecio.setText(String.valueOf(habitacion.getPrecio()));
+            cmbEstado.setSelectedItem(habitacion.getEstado());
+            System.out.println(habitacion.getEstado());
+            for (Elemento elemento :habitacion.getElementos()) {
+                modeloElementos.addElement(elemento.getNombre()+" : "+elemento.getPrecio()+" : "+elemento.getTipoElemento());
+                arrayElementos.add(elemento.getNombre()+" : "+elemento.getPrecio()+" : "+elemento.getTipoElemento());
+            }
+            listElementos.setModel(modeloElementos);
+        }
+    }
+    
     private void agregarListElementos() {
         modeloElementos = new DefaultListModel();
         if (txtNombre.getText().equals("") || txtPrecioElemento.getText().equals("")
@@ -85,9 +104,28 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         }
 
     }
+    private void eliminarItemList(){
+        try {
+                String indice;
+                if(listElementos.getSelectedIndex()==-1){
+                    JOptionPane.showMessageDialog(this,"Seleccione el elemneto a quitar", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    
+                }else{
+                    indice=listElementos.getSelectedValue();
+                    modeloElementos.removeElement(indice);
+                    arrayElementos.remove(indice);
+                    listElementos.setModel(modeloElementos);
+                    recargarElementosList();
+                }
+        } catch (Exception e) {
+        }
+    }
 
-    private void insertarElementos() {
-
+    private void recargarElementosList(){
+        modeloElementos.removeAllElements();
+        for (int i = 0; i < arrayElementos.size(); i++) {
+           modeloElementos.addElement(arrayElementos.get(i));
+        }
     }
 
     private void limpiarCampos() {
@@ -132,6 +170,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         btnguardar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listElementos = new javax.swing.JList<>();
+        BtnQuitar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -152,7 +191,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Estado:");
 
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "RESERVADO", "MANTENIMIENTO" }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "RESERVADA", "MANTENIMIENTO" }));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Elementos de la habitación");
@@ -180,7 +219,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OBJETO", "SERVICIO" }));
 
-        bntAgregarElemento.setText("Agregar Elemento");
+        bntAgregarElemento.setText("Agregar ");
         bntAgregarElemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntAgregarElementoActionPerformed(evt);
@@ -196,6 +235,13 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(listElementos);
 
+        BtnQuitar.setText("Quitar");
+        BtnQuitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnQuitarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,25 +250,30 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(spnNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNombre)
-                    .addComponent(txtPrecioElemento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntAgregarElemento, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(spnNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNombre)
+                            .addComponent(txtPrecioElemento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnQuitar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bntAgregarElemento, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
@@ -265,7 +316,9 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
                             .addComponent(jLabel8)
                             .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(bntAgregarElemento))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bntAgregarElemento)
+                            .addComponent(BtnQuitar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnguardar)
@@ -298,14 +351,31 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
             if (habitacion==null) {
             CONS.add(obtenerHabitacion());
             } else {
-                
+                Habitacion habitacionn=null;
+                for(Habitacion hab:CONS.HABITACIONES){
+                    if (hab.getNumero().equals(habitacion.getNumero())) {
+                        habitacionn=hab;
+                    }
+                }
+                if (habitacionn!=null) {
+                    habitacionn.setDescripcion(txtDescripcion.getText());
+                    habitacionn.setPrecio(Double.parseDouble(txtPrecio.getText()));
+                    habitacionn.setEstado(cmbEstado.getSelectedItem().toString());
+                    habitacionn.setElementos(ObtenerElementos());
+                }
             }
             irVtnHabitaciones();
         }
     }//GEN-LAST:event_btnguardarActionPerformed
 
+    private void BtnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnQuitarActionPerformed
+        // TODO add your handling code here:
+        eliminarItemList();
+    }//GEN-LAST:event_BtnQuitarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnQuitar;
     private javax.swing.JButton bntAgregarElemento;
     private javax.swing.JButton btnguardar;
     private javax.swing.JComboBox<String> cmbEstado;

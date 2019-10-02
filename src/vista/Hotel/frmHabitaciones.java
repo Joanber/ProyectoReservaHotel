@@ -6,8 +6,11 @@
 package vista.Hotel;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import modelos.CONS;
+import modelos.Elemento;
 import modelos.Habitacion;
 import vista.Principal.VtnPrincipal;
 
@@ -21,40 +24,58 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
      * Creates new form frmHabitaciones
      */
     private Habitacion habitacion;
-     private final VtnPrincipal desktop;
-     private ArrayList<Habitacion> habitaciones;
-     ArrayList arrayElementos=new ArrayList();
-     DefaultListModel modeloElementos;
-     
-    public frmHabitaciones(VtnPrincipal desktop,Habitacion habitacion) {
+    private final VtnPrincipal desktop;
+    private ArrayList<Habitacion> habitaciones;
+    ArrayList arrayElementos = new ArrayList();
+    DefaultListModel modeloElementos;
+
+    public frmHabitaciones(VtnPrincipal desktop, Habitacion habitacion) {
         this.habitacion = habitacion;
         this.desktop = desktop;
         initComponents();
     }
-    
-    private Habitacion obtenerHabitacion(){
-        Habitacion habit=new Habitacion();
+
+    private Habitacion obtenerHabitacion() {
+        Habitacion habit = new Habitacion();
         habit.setNumero(Integer.parseInt(spnNumero.getValue().toString()));
         habit.setDescripcion(txtDescripcion.getText());
         habit.setPrecio(Double.parseDouble(txtPrecio.getText()));
         habit.setEstado(cmbEstado.getSelectedItem().toString());
-        
-        
+        habit.setElementos(ObtenerElementos());
         return habit;
-        
     }
-    
-    private void agregarListElementos(){
-        modeloElementos=new DefaultListModel();
+
+    private List<Elemento> ObtenerElementos() {
+        List<Elemento> listaElementos = new ArrayList<>();
+        Elemento elemento = null;
+        for (int i = 0; i < listElementos.getModel().getSize(); i++) {
+            if (listElementos.getModel().getSize() > 0) {
+                elemento = new Elemento();
+                String obtenerItem = listElementos.getModel().getElementAt(i);
+                String[] cortarItem = obtenerItem.split(" : ");
+                String nombre = cortarItem[0];
+                elemento.setNombre(nombre);
+                String precio = cortarItem[1];
+                elemento.setPrecio(Double.parseDouble(precio));
+                String tipo = cortarItem[2];
+                elemento.setTipoElemento(tipo);
+                listaElementos.add(elemento);
+            }
+        }
+        return listaElementos;
+    }
+
+    private void agregarListElementos() {
+        modeloElementos = new DefaultListModel();
         if (txtNombre.getText().equals("") || txtPrecioElemento.getText().equals("")
                 || txtPrecioElemento.getText().equals("")) {
-             JOptionPane.showMessageDialog(this,"Campos vacios de elementos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Campos vacios de elementos", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             if (arrayElementos.contains(txtNombre.getText())) {
-                 JOptionPane.showMessageDialog(this,"Elemento ya añadido", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Elemento ya añadido", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
-                arrayElementos.add(txtNombre.getText()+":"+txtPrecioElemento.getText()
-                +":"+cmbTipo.getSelectedItem().toString());
+                arrayElementos.add(txtNombre.getText() + " : " + txtPrecioElemento.getText()
+                        + " : " + cmbTipo.getSelectedItem().toString());
                 for (int i = 0; i < arrayElementos.size(); i++) {
                     modeloElementos.addElement(arrayElementos.get(i));
                 }
@@ -62,13 +83,24 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
                 limpiarCampos();
             }
         }
-        
+
     }
-     
-    private void limpiarCampos(){
+
+    private void insertarElementos() {
+
+    }
+
+    private void limpiarCampos() {
         txtNombre.setText("");
         txtPrecioElemento.setText("");
         cmbTipo.setSelectedIndex(0);
+    }
+
+    private void irVtnHabitaciones() {
+        this.dispose();
+        VtnHabitaciones vtn = new VtnHabitaciones(desktop);
+        this.desktop.desk.add(vtn);
+        vtn.show();
     }
 
     /**
@@ -258,7 +290,18 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
-        
+
+        if (txtDescripcion.getText().equals("") || txtPrecio.getText().equals("")
+                || spnNumero.getValue().equals("0") || listElementos.getModel().getSize() < 1) {
+            JOptionPane.showMessageDialog(this, "Campos vacios y/o sin elementos", "Aviso", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (habitacion==null) {
+            CONS.add(obtenerHabitacion());
+            } else {
+                
+            }
+            irVtnHabitaciones();
+        }
     }//GEN-LAST:event_btnguardarActionPerformed
 
 

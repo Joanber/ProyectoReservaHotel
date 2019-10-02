@@ -31,6 +31,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         this.desktop = desktop;
         initComponents();
     }
+    
     private Habitacion obtenerHabitacion(){
         Habitacion habit=new Habitacion();
         habit.setNumero(Integer.parseInt(spnNumero.getValue().toString()));
@@ -96,7 +97,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         txtPrecioElemento = new javax.swing.JTextField();
         cmbTipo = new javax.swing.JComboBox<>();
         bntAgregarElemento = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnguardar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listElementos = new javax.swing.JList<>();
 
@@ -119,7 +120,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Estado:");
 
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "OCUPADO", "MANTENIMIENTO" }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "RESERVADO", "MANTENIMIENTO" }));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Elementos de la habitación");
@@ -154,7 +155,12 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Guardar Habitacion");
+        btnguardar.setText("Guardar Habitacion");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(listElementos);
 
@@ -176,7 +182,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spnNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
@@ -230,7 +236,7 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
                         .addComponent(bntAgregarElemento))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnguardar)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -250,12 +256,17 @@ public class frmHabitaciones extends javax.swing.JInternalFrame {
         agregarListElementos();
     }//GEN-LAST:event_bntAgregarElementoActionPerformed
 
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnguardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntAgregarElemento;
+    private javax.swing.JButton btnguardar;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbTipo;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

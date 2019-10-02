@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/Hotel/FrmElementosHabitacion.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/Hotel/VtnHabitaciones.java</file>
             <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/modelos/Habitacion.java</file>
-            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/Hotel/FrmTipoElemento.java</file>
-            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/modelos/TipoElemento.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/modelos/Elemento.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/modelos/CONS.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/Hotel/frmHabitaciones.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/habitaciones/VtnHabitaciones.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/modelos/Reserva.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/modelos/Cliente.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/cliente/FormCliente.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/reserva/VtnReservas.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/reserva/FormReserva.java</file>
+            <file>file:/C:/Users/Skull/Desktop/GIT_HUB/ProyectoReservaHotel/src/vista/cliente/VtnClientes.java</file>
         </group>
     </open-files>
 </project-private>

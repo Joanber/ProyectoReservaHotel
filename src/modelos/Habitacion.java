@@ -108,5 +108,21 @@ public class Habitacion {
 
         return elementosStr;
     }
+    public String getElementosAll() {
+        String elementosStr = "";
+
+        List<Elemento> result = this.elementos;
+
+        if (result.isEmpty()) {
+            elementosStr += "NINGUNO";
+        }
+
+        for (Elemento elemento : result) {
+            elementosStr += " " + elemento.getNombre() + " |";
+        }
+
+        return elementosStr;
+    }
+    
 
 }

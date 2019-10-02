@@ -5,8 +5,11 @@
  */
 package vista.reserva;
 
+import javax.swing.JOptionPane;
+import modelos.CONS_CLIENTE;
 import modelos.Cliente;
 import modelos.Habitacion;
+import modelos.Reserva;
 
 /**
  *
@@ -14,13 +17,16 @@ import modelos.Habitacion;
  */
 public class VtnReserva extends javax.swing.JFrame {
 
-    private Habitacion habitacion;
-    private Cliente cliente;
+    private final Habitacion habitacion;
+    private final Cliente cliente;
+
+    private Reserva reserva;
 
     public VtnReserva(Habitacion habitacion, Cliente cliente) {
         initComponents();
         this.habitacion = habitacion;
         this.cliente = cliente;
+
         this.txtCliente.setText(cliente.infoTextArea());
         this.txtHabitacion.setText(habitacion.infoTextArea());
     }
@@ -59,6 +65,11 @@ public class VtnReserva extends javax.swing.JFrame {
         cmbMetodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta de Credito" }));
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +118,23 @@ public class VtnReserva extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+        this.reserva = new Reserva();
+
+        this.reserva.setCliente(cliente)
+                .setHabitacion(habitacion)
+                .setFechaHora()
+                .setMetodoPago(this.cmbMetodoPago.getSelectedItem().toString());
+
+        CONS_CLIENTE.reservas.add(this.reserva);
+
+        JOptionPane.showMessageDialog(null, "RESERVA EXITOSA\n VUELVA PRONTO", "Informacion", 1);
+
+        this.dispose();
+
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

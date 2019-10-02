@@ -3,6 +3,8 @@ package vista.Principal;
 import vista.Hotel.FrmElementosHabitacion;
 import vista.Hotel.FrmHabitacion;
 import vista.Hotel.FrmTipoElemento;
+import vista.cliente.FormCliente;
+import vista.cliente.VtnClientes;
 
 
 
@@ -194,6 +196,9 @@ public class VtnPrincipal extends javax.swing.JFrame {
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
+        VtnClientes vtn=new VtnClientes(this);
+        this.desk.add(vtn);
+        vtn.show();
     }//GEN-LAST:event_btnClientesActionPerformed
 
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelos.CONS_CLIENTE;
 import modelos.Cliente;
+import modelos.VALIDACIONCedula;
 import vista.Principal.VtnPrincipal;
 
 /**
@@ -149,29 +150,33 @@ public class FormCliente extends javax.swing.JInternalFrame {
         } else {
 
             if (txtContraseña.getText().equalsIgnoreCase(txtConfirmarContraseña.getText())) {
+                if (VALIDACIONCedula.validadorDeCedula(txtCedula.getText()) == true) {
 
-                if (cliente == null) {
-                    CONS_CLIENTE.clientes.add(obtenerCliente());
-                } else {
-                    Cliente client = null;
-                    for (Cliente cli : CONS_CLIENTE.clientes) {
-                        if (cli.getCedula().equals(cliente.getCedula())) {
-                            System.out.println(cliente.getCedula());
-                            client = cli;
+                    if (cliente == null) {
+                        CONS_CLIENTE.clientes.add(obtenerCliente());
+                    } else {
+                        Cliente client = null;
+                        for (Cliente cli : CONS_CLIENTE.clientes) {
+                            if (cli.getCedula().equals(cliente.getCedula())) {
+                                System.out.println(cliente.getCedula());
+                                client = cli;
+                            }
+                        }
+                        if (client != null) {
+                            client.setCedula(txtCedula.getText());
+                            client.setNombres(txtNombres.getText());
+                            client.setApellidos(txtApellidos.getText());
+                            client.setCorreo(txtEmail.getText());
+                            client.setContraseña(txtContraseña.getText());
                         }
                     }
-                    if (client != null) {
-                        client.setCedula(txtCedula.getText());
-                        client.setNombres(txtNombres.getText());
-                        client.setApellidos(txtApellidos.getText());
-                        client.setCorreo(txtEmail.getText());
-                        client.setContraseña(txtContraseña.getText());
-                    }
+                    this.dispose();
+                    VtnClientes vtn = new VtnClientes(desktop);
+                    this.desktop.desk.add(vtn);
+                    vtn.show();
+                } else {
+                    JOptionPane.showMessageDialog(this, "CEDULA INCORRECTA", "Aviso", JOptionPane.ERROR_MESSAGE);
                 }
-                this.dispose();
-                VtnClientes vtn = new VtnClientes(desktop);
-                this.desktop.desk.add(vtn);
-                vtn.show();
             } else {
                 lblContraseña.setText("Las contraseñas no son iguales");
             }
